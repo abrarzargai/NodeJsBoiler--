@@ -2,7 +2,6 @@ const express = require('express');
 const route = express.Router();
 const UserServices = require('../../Services/userService')
 const middleware = require('../../utils/Middleware_validation')
-
 /***************Routes************/
 
 //SignUp
@@ -14,7 +13,6 @@ route.post('/signup',
 route.post('/login',UserServices.Login);
 
 route.patch('/update', UserServices.Update);
-
 
 
 module.exports = route;

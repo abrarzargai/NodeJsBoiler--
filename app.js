@@ -5,7 +5,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
-
+//swager
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger/swagger.yaml'); 
 
 const userRoutes = require('./api/api');
 const globalErrHandler = require('./utils/errorController');
@@ -40,7 +43,8 @@ app.use(xss());
 // Prevent parameter pollution
 app.use(hpp());
 
-
+//swager
+ app.use('/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Routes
 app.use('/api', userRoutes);
 
